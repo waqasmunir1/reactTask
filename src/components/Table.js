@@ -1,29 +1,29 @@
 "use client"; // this is a client component
 import { tableData } from "@/utils/data";
 import React, { useState } from "react";
-
+// Table componen
 const Table = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState(tableData);
-
+  // Input Search
   const handleSearchInputChange = (event) => {
     setSearchQuery(event.target.value);
     setCurrentPage(1);
-  }; 
-
+  };
+  // Search output stored here
   const filteredData = search.filter(
     (item) =>
       item.id.toLowerCase()?.includes(searchQuery.toLowerCase()) ||
       item.title.toLowerCase()?.includes(searchQuery.toLowerCase()) ||
       item.year.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
+  // Target sorted data
   const handleSortOrderChange = (event) => {
     setSortOrder(event.target.value);
   };
-
+  // Sorted data stored here
   const sortedData = filteredData.sort((a, b) => {
     if (sortOrder === "asc") {
       return a.year - b.year;
@@ -31,15 +31,15 @@ const Table = () => {
       return b.year - a.year;
     }
   });
-
+  // Pagination
   const PAGE_SIZE = 10;
 
   const totalPages = Math.ceil(filteredData.length / PAGE_SIZE);
-
+  // Previous click handler
   const handlePreviousClick = () => {
     setCurrentPage((currentPage) => currentPage - 1);
   };
-
+  // Next click handler
   const handleNextClick = () => {
     setCurrentPage((currentPage) => currentPage + 1);
   };
