@@ -17,6 +17,7 @@ const Table = () => {
     (item) =>
       item.id.toLowerCase()?.includes(searchQuery.toLowerCase()) ||
       item.title.toLowerCase()?.includes(searchQuery.toLowerCase()) ||
+      item.description.toLowerCase()?.includes(searchQuery.toLowerCase()) ||
       item.year.toLowerCase().includes(searchQuery.toLowerCase())
   );
   // Target sorted data
@@ -99,10 +100,18 @@ const Table = () => {
       </table>
 
       <div className="pagination">
-        <button onClick={handlePreviousClick} disabled={currentPage === 1}>
+        <button
+          className="previous-button"
+          onClick={handlePreviousClick}
+          disabled={currentPage === 1}
+        >
           Previous
         </button>
-        <button onClick={handleNextClick} disabled={currentPage === totalPages}>
+        <button
+          className="next-button"
+          onClick={handleNextClick}
+          disabled={currentPage === totalPages}
+        >
           Next
         </button>
       </div>
