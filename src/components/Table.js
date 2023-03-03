@@ -15,10 +15,10 @@ const Table = () => {
   // Search output stored here
   const filteredData = search.filter(
     (item) =>
-      item.id.toLowerCase()?.includes(searchQuery.toLowerCase()) ||
-      item.title.toLowerCase()?.includes(searchQuery.toLowerCase()) ||
-      item.description.toLowerCase()?.includes(searchQuery.toLowerCase()) ||
-      item.year.toLowerCase().includes(searchQuery.toLowerCase())
+      item?.id?.toLowerCase()?.includes(searchQuery?.toLowerCase()) ||
+      item?.title?.toLowerCase()?.includes(searchQuery?.toLowerCase()) ||
+      item?.description?.toLowerCase()?.includes(searchQuery?.toLowerCase()) ||
+      item?.year?.toLowerCase()?.includes(searchQuery?.toLowerCase())
   );
   // Target sorted data
   const handleSortOrderChange = (event) => {
@@ -35,7 +35,7 @@ const Table = () => {
   // Pagination
   const PAGE_SIZE = 20;
 
-  const totalPages = Math.ceil(filteredData.length / PAGE_SIZE);
+  const totalPages = Math.ceil(filteredData?.length / PAGE_SIZE);
   // Previous click handler
   const handlePreviousClick = () => {
     setCurrentPage((currentPage) => currentPage - 1);
@@ -84,15 +84,15 @@ const Table = () => {
           </tr>
         </thead>
         <tbody>
-          {!paginatedData.length ? (
+          {!paginatedData?.length ? (
             <h1>No Data found...</h1>
           ) : (
             paginatedData?.map((item) => (
-              <tr key={item.id}>
-                <td>{item.id}</td>
-                <td>{item.year}</td>
-                <td>{item.title}</td>
-                <td>{item.description}</td>
+              <tr key={item?.id}>
+                <td>{item?.id}</td>
+                <td>{item?.year}</td>
+                <td>{item?.title}</td>
+                <td>{item?.description}</td>
               </tr>
             ))
           )}
