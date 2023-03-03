@@ -33,7 +33,7 @@ const Table = () => {
     }
   });
   // Pagination
-  const PAGE_SIZE = 10;
+  const PAGE_SIZE = 20;
 
   const totalPages = Math.ceil(filteredData.length / PAGE_SIZE);
   // Previous click handler
@@ -87,7 +87,7 @@ const Table = () => {
           {!paginatedData.length ? (
             <h1>No Data found...</h1>
           ) : (
-            paginatedData?.map((item, index) => (
+            paginatedData?.map((item) => (
               <tr key={item.id}>
                 <td>{item.id}</td>
                 <td>{item.year}</td>
